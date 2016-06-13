@@ -7,7 +7,7 @@ $mdp = $_POST['password'];
 
 if ($user == null || $mdp == null){
 	header('Location: auth.html');
- 	exit();
+	exit();
 }
 
 if ($users[$user]['password'] == $mdp){
@@ -27,8 +27,8 @@ if ($users[$user]['password'] == $mdp){
 	mcrypt_generic_deinit($cipher);
 
 	preg_replace('/\n/g', '', $multipass);
-	preg_replace('/\//g', '_', $multipass); 
-	preg_replace('/\//g', '_', $multipass); 
+	preg_replace('/\//g', '_', $multipass);
+	preg_replace('/\//g', '_', $multipass);
 
 	$multipass = base64_encode($multipass);
 
@@ -39,12 +39,12 @@ if ($users[$user]['password'] == $mdp){
 
 	$multipass = urlencode($multipass);
 	$signature = urlencode($signature);
-	
+
 	header("Location: ". $redirect_url . "auth/multipass/callback?multipass=" . $multipass . "&signature=" . $signature);
 	exit();
 
 } else {
 	echo "Bad password";
 	header('Location: auth.html');
- 	exit();
+	exit();
 }
